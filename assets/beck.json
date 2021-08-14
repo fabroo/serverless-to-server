@@ -1,0 +1,23 @@
+{
+	"preguntas": {
+		"pregunta_1": "Me siento calmado",
+		"pregunta_2": "Me siento seguro",
+		"pregunta_3": "Estoy tenso",
+		"pregunta_4": "Estoy contrariado (malhumorado o disgustado)",
+		"pregunta_5": "Me siento cómodo (estoy a gusto)",
+		"pregunta_6": "Estoy preocupado ahora por posibles desgracias futuras",
+		"pregunta_7": "Me siento descansado",
+		"pregunta_8": "Me siento angustiado",
+		"pregunta_9": "Me siento confortable",
+		"pregunta_10": "Tengo confianza en mi mismo",
+		"pregunta_11": "Me siento nervioso",
+		"pregunta_12": "Estoy desasosegado (agitado e inquieto)",
+		"pregunta_13": "Me siento muy “atado” (como oprimido)",
+		"pregunta_14": "Estoy relajado",
+		"pregunta_15": "Me siento satisfecho",
+		"pregunta_16": "Estoy preocupado",
+		"pregunta_17": "Me siento aturdido y sobreexcitado",
+		"pregunta_18": "Me siento alegre",
+		"pregunta_19": "En este momento me siento bien"
+	}
+}

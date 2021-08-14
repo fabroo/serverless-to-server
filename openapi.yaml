@@ -1,0 +1,251 @@
+# [START swagger]
+swagger: "2.0"
+info:
+  description: "Documentacion de la API de prueba de revibe"
+  title: "revibe_23_06_21"
+  version: "1.0.0"
+# [END swagger]
+consumes:
+- "application/json"
+produces:
+- "application/json"
+schemes:
+# Uncomment the next line if you configure SSL for this API.
+#- "https"
+- "http"
+paths:
+  "/helloWorld":
+        get:
+          description: "Testear la API, es un endpoint público."
+          operationId: "helloWorld"
+          x-google-backend:
+            address: https://us-central1-moodsic-proyecto.cloudfunctions.net/global-helloWorld
+          produces:
+          - "application/json"
+          responses:
+            200:
+              description: "API Funcionando"
+              schema:
+                type: string
+            400:
+              description: "API no Funcionando"
+              schema:
+                type: string
+ 
+  "/userInfo":
+        get:
+          description: "Funcion para obtener los datos de Spotify del usuario."
+          operationId: "userInfo"
+          x-google-backend:
+            address: https://us-central1-moodsic-proyecto.cloudfunctions.net/spotify-getUserInfo
+          produces:
+          - "application/json"
+          responses:
+            200:
+              description: "Callback success"
+              schema:
+                type: string
+            400:
+              description: "Error en al autententicación"
+              schema:
+                type: string
+  "/spotify/userLikes":
+        get:
+          description: "Funcion para obtener los favoritos de spotify."
+          operationId: "userLikes"
+          x-google-backend:
+            address: https://us-central1-moodsic-proyecto.cloudfunctions.net/spotify-userLikes
+          produces:
+          - "application/json"
+          responses:
+            200:
+              description: "userLikes"
+              schema:
+                type: string
+            400:
+              description: "not userLikes"
+              schema:
+                type: string
+  "/spotify/userFeatures":
+        get:
+          description: "Funcion para obtener las userFeatures."
+          operationId: "userFeatures"
+          x-google-backend:
+            address: https://us-central1-moodsic-proyecto.cloudfunctions.net/spotify-userFeatures
+          produces:
+          - "application/json"
+          responses:
+            200:
+              description: "userFeatures"
+              schema:
+                type: string
+            400:
+              description: "not userFeatures"
+              schema:
+                type: string
+      
+  "/coleccion/buscar":
+          get:
+            description: "Buscar si existe la coleccion del UID del token que le llega"
+            operationId: "buscarColeccion"
+            x-google-backend:
+              address: https://us-central1-moodsic-proyecto.cloudfunctions.net/global-handleUserCollections
+            produces:
+            - "application/json"
+            responses:
+              200:
+                description: "Existe la coleccion"
+                schema:
+                  type: string
+              400:
+                description: "No existe la coleccion"
+                schema:
+                  type: string
+     
+  "/coleccion/eliminar":
+          delete:
+            description: "Eliminar la coleccion, si existe, del usuario cuyo UID se deriva del token"
+            operationId: "eliminarColeccion"
+            x-google-backend:
+              address: https://us-central1-moodsic-proyecto.cloudfunctions.net/global-handleUserCollections
+            produces:
+            - "application/json"
+            responses:
+              200:
+                description: "Coleccion eliminada"
+                schema:
+                  type: string
+              400:
+                description: "Coleccion no eliminada"
+                schema:
+                  type: string
+     
+  "/coleccion/actualizar":
+          put:
+            description: "Actualizar campos de la coleccion del usuario, si existe"
+            operationId: "actualizarColeccion"
+            x-google-backend:
+              address: https://us-central1-moodsic-proyecto.cloudfunctions.net/global-handleUserCollections
+            produces:
+            - "application/json"
+            responses:
+              200:
+                description: "Informacion actualizada"
+                schema:
+                  type: string
+              400:
+                description: "Informacion no actualizada"
+                schema:
+                  type: string
+     
+  "/coleccion/crear":
+        post:
+          description: "Crear la coleccion de un usuario, si es que no existe"
+          operationId: "crearColeccion"
+          x-google-backend:
+            address: https://us-central1-moodsic-proyecto.cloudfunctions.net/global-handleUserCollections
+          produces:
+          - "application/json"
+          responses:
+            200:
+              description: "Coleccion creada"
+              schema:
+                type: string
+         
+            400:
+              description: "Coleccion no creada"
+              schema:
+                type: string
+  "/playlists/crear":
+        post:
+          description: "Crear una playlist en el perfil del usuario."
+          operationId: "crearPlaylist"
+          x-google-backend:
+            address: https://us-central1-moodsic-proyecto.cloudfunctions.net/spotify-handlePlaylists
+          produces:
+          - "application/json"
+          responses:
+            200:
+              description: "Playlist creada"
+              schema:
+                type: string
+         
+            400:
+              description: "Playlist no creada"
+              schema:
+                type: string
+
+  "/playlists/data":
+          get:
+            description: "Metodo provisional, actualmente devuelve las audio features"
+            operationId: "dataPlaylist"
+            x-google-backend:
+              address: https://us-central1-moodsic-proyecto.cloudfunctions.net/spotify-handlePlaylists
+            produces:
+            - "application/json"
+            responses:
+              200:
+                description: "Data encontrada"
+                schema:
+                  type: string
+           
+              400:
+                description: "Data no encontrada"
+                schema:
+                  type: string
+         
+  "/auth/callback":
+          get:
+            description: "Funcion callback para la autenticacion de Spotify."
+            operationId: "callback"
+            x-google-backend:
+              address: https://us-central1-moodsic-proyecto.cloudfunctions.net/spotify-callback
+            produces:
+            - "application/json"
+            responses:
+              200:
+                description: "Callback success"
+                schema:
+                  type: string
+              400:
+                description: "Error en al autententicación"
+                schema:
+                  type: string
+   
+  "/auth/refreshToken":
+        put:
+          description: "Refrescar el access token de Spotify"
+          operationId: "refreshToken"
+          x-google-backend:
+            address: https://us-central1-moodsic-proyecto.cloudfunctions.net/spotify-refreshToken
+          produces:
+          - "application/json"
+          responses:
+            200:
+              description: "Data encontrada"
+              schema:
+                type: string
+         
+            400:
+              description: "Data no encontrada"
+              schema:
+                type: string
+  "/tracks/add":
+      post:
+        description: "Agregar cancion a playlist"
+        operationId: "addSong"
+        x-google-backend:
+          address: https://us-central1-moodsic-proyecto.cloudfunctions.net/spotify-handleSongs
+        produces:
+        - "application/json"
+        responses:
+          200:
+            description: "Cancion agregada"
+            schema:
+              type: string
+       
+          400:
+            description: "Cancion no agregada"
+            schema:
+              type: string
+       
